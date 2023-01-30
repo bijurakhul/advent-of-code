@@ -11,7 +11,6 @@ macro_rules! find_rpc {
     };
 }
 
-#[derive(Debug)]
 enum RoundResult {
     Lose = 0,
     Draw = 3,
@@ -46,10 +45,8 @@ impl Game {
         }
     }
     fn round_total(&self) -> u32 {
-        let a = self.round_winner();
-        let b = self.human_selected;
-        let c = b as u32;
-        c as u32 + a as u32
+        let winner_points = self.round_winner();
+        self.human_selected as u32 + winner_points as u32
     }
 }
 
